@@ -4,7 +4,6 @@
 - Rails6.1.6  
 ## 就職termの技術  
 - devise  
-- rails_admin
 - お気に入り機能  
 ## カリキュラム外の技術  
 - ransack  
