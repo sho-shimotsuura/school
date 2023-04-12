@@ -60,8 +60,7 @@ class SchoolsController < ApplicationController
   end
 
   private
-<<<<<<< HEAD
-
+  
     # Use callbacks to share common setup or constraints between actions.
   def set_school
     @school = School.find(params[:id])
@@ -71,16 +70,4 @@ class SchoolsController < ApplicationController
   def school_params
     params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image)
   end
-
-=======
-    # Use callbacks to share common setup or constraints between actions.
-    def set_school
-      @school = School.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def school_params
-      params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image)
-    end
->>>>>>> origin/master
 end
