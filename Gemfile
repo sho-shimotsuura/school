@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'devise-i18n'
 gem 'rexml'
+gem 'rename'
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'rails_admin', '~> 3.0'
 gem 'cancancan'
