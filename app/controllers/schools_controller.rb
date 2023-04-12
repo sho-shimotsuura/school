@@ -1,9 +1,11 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:new, :create]
 
   # GET /schools or /schools.json
   def index
-    @schools = School.all
+    @q = School.ransack(params[:q])
+    @schools = @q.result
   end
 
   # GET /schools/1 or /schools/1.json
@@ -58,6 +60,19 @@ class SchoolsController < ApplicationController
   end
 
   private
+<<<<<<< HEAD
+
+    # Use callbacks to share common setup or constraints between actions.
+  def set_school
+    @school = School.find(params[:id])
+  end
+
+    # Only allow a list of trusted parameters through.
+  def school_params
+    params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image)
+  end
+
+=======
     # Use callbacks to share common setup or constraints between actions.
     def set_school
       @school = School.find(params[:id])
@@ -67,4 +82,5 @@ class SchoolsController < ApplicationController
     def school_params
       params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image)
     end
+>>>>>>> origin/master
 end
