@@ -1,3 +1,9 @@
-<h1>プロフィールページ</h1>
+<h1><%= @user.name %>さんのページ</h1>
+      
+<p>メールアドレス: <%= @user.email %></p>
 
-<div>あなたの名前: <%= current_user.name %></div>
+<p>
+<%= link_to "一覧画面へ", schools_path %>
+<% if @user == current_user %>
+  <%= link_to "プロフィールの編集", edit_user_path %>
+<% end %>
