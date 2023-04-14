@@ -4,12 +4,14 @@ class SchoolsController < ApplicationController
 
   # GET /schools or /schools.json
   def index
+    @schools = School.all
     @q = School.ransack(params[:q])
     @schools = @q.result
   end
 
   # GET /schools/1 or /schools/1.json
   def show
+    @favorite = current_user.favorites.find_by(school_id: @school.id)
   end
 
   # GET /schools/new
@@ -23,8 +25,7 @@ class SchoolsController < ApplicationController
 
   # POST /schools or /schools.json
   def create
-    @school = School.new(school_params)
-
+    @school = current_user.schools.build(school_params)
     respond_to do |format|
       if @school.save
         format.html { redirect_to school_url(@school), notice: "School was successfully created." }
@@ -68,6 +69,7 @@ class SchoolsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def school_params
-    params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image)
+    params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image, :id)
   end
+
 end
