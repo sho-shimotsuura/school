@@ -16,7 +16,11 @@ class SchoolsController < ApplicationController
 
   # GET /schools/new
   def new
-    @school = School.new
+    if current_user.role == "executive"
+      @school = School.new
+    else current_user.role == "general"
+      redirect_to(schools_path)
+    end  
   end
 
   # GET /schools/1/edit
@@ -71,5 +75,4 @@ class SchoolsController < ApplicationController
   def school_params
     params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image, :id)
   end
-
 end
