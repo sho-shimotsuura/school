@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :schools
   has_many :favorites, dependent: :destroy
+  has_many :favorite_schools, through: :favorites, source: :school
+  enum role: { general: 0, executive: 1 }
 end

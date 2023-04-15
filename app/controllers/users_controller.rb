@@ -4,6 +4,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    if current_user.role == "executive"
+      @schools = current_user.schools
+    else  
+      @favorite_schools = current_user.favorite_schools
+    end
   end
 
   def edit
