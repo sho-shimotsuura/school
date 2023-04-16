@@ -9,6 +9,7 @@
       <th>市区町村</th>
       <th>電話番号</th>
       <th>概要</th>
+      <th>科目</th>
       <th>写真</th>
       <th colspan="3"></th>
     </tr>
@@ -22,6 +23,11 @@
         <td><%= school.city %></td>
         <td><%= school.phone %></td>
         <td><%= school.overview %></td>
+        <td>
+          <% school.handling_subjects.each do |subject| %>
+            <%= subject.name %>
+          <% end %>
+        </td>
         <td><%= school.image %></td>
         <td><%= link_to 'Show', school %></td>
         <% if current_user && current_user == school.user %>
