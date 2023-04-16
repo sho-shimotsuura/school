@@ -41,6 +41,12 @@
     <%= form.text_area :image %>
   </div>
 
+  <div class="field">
+    <%= form.label :subject %>
+    <%= form.collection_check_boxes(:handling_subject_ids, Subject.all, :id, :name) do |cd| %>
+      <%= cd.label { cd.check_box + cd.text } %>
+    <% end %>
+  </div>
 
   <div class="actions">
     <%= form.submit %>

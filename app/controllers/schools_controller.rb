@@ -11,7 +11,11 @@ class SchoolsController < ApplicationController
 
   # GET /schools/1 or /schools/1.json
   def show
-    @favorite = current_user.favorites.find_by(school_id: @school.id)
+    if current_user
+      @favorite = current_user.favorites.find_by(school_id: @school.id)
+    else
+      redirect_to new_user_session_path
+    end  
   end
 
   # GET /schools/new
@@ -73,6 +77,6 @@ class SchoolsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def school_params
-    params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image, :id)
+    params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image, :id, { handling_subject_ids: [] })
   end
 end
