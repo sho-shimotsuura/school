@@ -6,7 +6,9 @@ class SchoolsController < ApplicationController
   def index
     @schools = School.all
     @q = School.ransack(params[:q])
+    #binding.pry
     @schools = @q.result
+    @subjects = Subject.all
   end
 
   # GET /schools/1 or /schools/1.json

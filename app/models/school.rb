@@ -7,4 +7,9 @@ class School < ApplicationRecord
   has_many :favorite_users, through: :favorites, source: :user
   has_many :handlings, dependent: :destroy
   has_many :handling_subjects, through: :handlings, source: :subject
+  has_one_attached :image
+
+  def self.ransackable_associations(auth_object = nil)
+    [:handlings, :handling_subjects]
+  end
 end
