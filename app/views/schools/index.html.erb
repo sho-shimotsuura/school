@@ -28,7 +28,11 @@
             <%= subject.name %>
           <% end %>
         </td>
-        <td><%= school.image %></td>
+        <td>
+          <% if school.image.attached? %>
+              <%= image_tag school.image.variant(gravity: "Center", resize: "100x100!", crop: "100x100+0+0").processed %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', school %></td>
         <% if current_user && current_user == school.user %>
           <td><%= link_to 'Edit', edit_school_path(school)  %></td>
@@ -45,6 +49,8 @@
   <%= f.search_field :name_cont %>
   <%= f.label :prefecture_cont, '都道府県' %>
   <%= f.search_field :prefecture_cont %>
+  <%= f.label :handling_subjects_ids, '科目' %>
+  <%= f.collection_check_boxes(:subject_ids, @subjects, :id, :name) %>
   <br>
   <%= f.submit '検索' %>
 <% end %>
