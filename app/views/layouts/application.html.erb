@@ -11,22 +11,25 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
-      <%= link_to "塾一覧", schools_path %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-    <% else %>
-      <%= link_to "塾一覧", schools_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to 'ログイン', new_user_session_path %></li>
-    <% end %>
+    <header>
+      <% if user_signed_in? %>
+        <%= link_to "塾一覧", schools_path %>
+        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <%= link_to "塾一覧", schools_path %>
+        <%= link_to "新規登録", new_user_registration_path %>
+        <%= link_to 'ログイン', new_user_session_path %></li>
+      <% end %>
+    </header> 
 
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
+      <% if notice %>
+        <p class="alert alert-notice"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-error"><%= alert %></p>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    <footer></footer>
   </body>
 </html>

@@ -9,7 +9,12 @@ class School < ApplicationRecord
   has_many :handling_subjects, through: :handlings, source: :subject
   has_one_attached :image
 
+  
+
   def self.ransackable_associations(auth_object = nil)
-    [:handlings, :handling_subjects]
+    {
+      school: [:name, :prefecture], 
+      subjects: [:name] 
+    }
   end
 end
