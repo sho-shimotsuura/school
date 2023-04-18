@@ -1,3 +1,17 @@
-// Place all the styles related to the schools controller here.
+// Place all the styles related to the flowers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.school-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.school-card {
+  width: 300px;
+  background-color: rgb(209, 242, 238);
+  padding: 10px;
+  margin-bottom: 60px;
+  box-shadow: 15px 10px 10px rgba(5,5,5,5.5);
+}

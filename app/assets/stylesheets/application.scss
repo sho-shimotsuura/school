@@ -1,0 +1,51 @@
+html {
+  font-size: 70%;
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-image: url("/images/istockphoto-814739542-612x612.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+header {
+  background-color: rgb(121, 220, 220);
+  height: 40px;
+  font-size: 1.5rem;
+  display: table;
+  width: 100%;
+}
+
+header p {
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell
+}
+
+header li {
+  color: #fff;
+  font-size: 1rem;
+}
+
+footer {
+  background-color: rgb(121, 220, 220);
+  height: 10px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  display: table;
+}
+
+footer p {
+  position: fixed;
+  color: #fff;
+  font-size: 1rem;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell
+}
+
