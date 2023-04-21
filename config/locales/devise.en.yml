@@ -1,5 +1,10 @@
 # Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: '名前'
 en:
   devise:
     confirmations:

@@ -20,6 +20,9 @@ gem 'cancancan'
 gem 'ransack'
 gem 'faker'
 gem 'image_processing'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

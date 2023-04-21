@@ -10,43 +10,48 @@
       </ul>
     </div>
   <% end %>
+  
+  <%= stylesheet_link_tag 'schools_form' %>
+  
+
+    <%= form.label :塾名 %>
+    <%= form.text_field :name, class: 'form-control'  %>
+
+  <br>
+
+    <%= form.label :県名 %>
+    <%= form.text_field :prefecture, class: 'form-control' %>
+
+  <br>
+
+    <%= form.label :住所 %>
+    <%= form.text_field :city, class: 'form-control' %>
+
+  <br>
+
+    <%= form.label :電話番号 %>
+    <%= form.text_field :phone, class: 'form-control' %>
+
+  <br>
+
+    <%= form.label :概要 %>
+    <%= form.text_area :overview, class: 'form-control' %>
+
+  <br>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :prefecture %>
-    <%= form.text_field :prefecture %>
-  </div>
-
-  <div class="field">
-    <%= form.label :city %>
-    <%= form.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :overview %>
-    <%= form.text_area :overview %>
-  </div>
-
-  <div class="field">
-  <%= form.file_field :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :subject %>
+    <%= form.label :科目 %>
     <%= form.collection_check_boxes(:handling_subject_ids, Subject.all, :id, :name) do |cd| %>
       <%= cd.label { cd.check_box + cd.text } %>
     <% end %>
   </div>
 
+  <br>
+
+  <%= form.file_field :image %>
+
+
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>

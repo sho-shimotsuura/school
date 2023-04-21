@@ -1,3 +1,22 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_self
+ */
+
+
+@import "bootstrap";
+@import "signup";
+
 html {
   font-size: 70%;
   height: 100%;
@@ -5,47 +24,36 @@ html {
 
 body {
   height: 100%;
-  background-image: url("/images/istockphoto-814739542-612x612.jpg");
-  background-size: contain;
+  background-image: url("/images/kojinjuku-970x648.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
 header {
-  background-color: rgb(121, 220, 220);
+  background-color: rgb(222, 58, 13);
   height: 40px;
   font-size: 1.5rem;
   display: table;
   width: 100%;
 }
 
-header p {
-  color: #fff;
-  font-size: 1rem;
-  text-align: center;
-  vertical-align: middle;
+
+.right {
+  text-align: right;
+  vertical-align: bottom;
   display: table-cell
 }
 
-header li {
-  color: #fff;
-  font-size: 1rem;
+.right a {
+  color: rgb(18, 8, 0);
 }
 
+
 footer {
-  background-color: rgb(121, 220, 220);
-  height: 10px;
+  background-color: rgb(222, 58, 13);
+  height: 30px;
   width: 100%;
   position: fixed;
   bottom: 0;
   display: table;
 }
-
-footer p {
-  position: fixed;
-  color: #fff;
-  font-size: 1rem;
-  text-align: center;
-  vertical-align: middle;
-  display: table-cell
-}
-

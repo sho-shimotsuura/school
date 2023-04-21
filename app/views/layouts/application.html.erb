@@ -12,15 +12,21 @@
 
   <body>
     <header>
-      <% if user_signed_in? %>
-        <%= link_to "塾一覧", schools_path %>
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <%= link_to "塾一覧", schools_path %>
-        <%= link_to "新規登録", new_user_registration_path %>
-        <%= link_to 'ログイン', new_user_session_path %></li>
-      <% end %>
-    </header> 
+      <div class="right">
+        <% if user_signed_in? %>
+          <%= link_to "塾一覧", schools_path %>
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+            <% if current_user.admin? %>
+              <%= link_to "管理者ページ", rails_admin_path %>
+            <% end %>  
+        <% else %>
+          <%= link_to "塾一覧", schools_path %>
+          <%= link_to "新規登録", new_user_registration_path %>
+          <%= link_to 'ログイン', new_user_session_path %>
+        <% end %>
+      </div>
+    </header>
+    
 
       <% if notice %>
         <p class="alert alert-notice"><%= notice %></p>

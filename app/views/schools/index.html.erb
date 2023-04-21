@@ -2,7 +2,7 @@
   <%= stylesheet_link_tag 'schools' %>
 </head>
 
-<h1>塾検索</h1>
+<h3>塾検索</h3>
 <%= search_form_for @q, url: schools_path do |f| %>
   <%= f.label :name_cont, '塾名' %>
   <%= f.search_field :name_cont %>
@@ -12,17 +12,18 @@
     <%= f.check_box :habdling_subjects_id_eq_any, { multiple: true, checked: subject[:checked], disabled: subject[:disabled], include_hidden: false }, subject[:id] %>
     <label><%= subject.name %></label>
   <% end %>
-  <br>
   <%= f.submit '検索' %>
 <% end %>
 
 
-<%= link_to 'New School', new_school_path %>
+<td><button type="button" class="btn-secondary"><%= link_to '塾の新規投稿', new_school_path %></button><td>
 <% if current_user %>
-  <%= link_to 'マイページ', user_path(current_user) %>
+  <td><button type="button" class="btn-secondary"><%= link_to 'マイページ', user_path(current_user) %></button><td>
 <% end %>  
 
-<h2>塾一覧</h2>
+<h3>塾一覧</h3>
+
+<%= paginate @schools, thema: 'twitter-bootstrap-4' %>
 
 <table>
   <tbody>
@@ -37,22 +38,23 @@
             <p><%= school.name %></p>
             <p><%= school.prefecture %></p>
             <p><%= school.city %></p>
-            <p><%= school.phone %></p>
-            <p><%= school.overview %></p>
+            <p><%#= school.phone %></p>
+            <p><%#= school.overview %></p>
             <p>
               <% school.handling_subjects.each do |subject| %>
                 <%= subject.name %>
               <% end %>
             </p>
-            <p><%= link_to 'Show', school %></p>
-            <% if current_user && current_user == school.user %>
-              <p><%= link_to 'Edit', edit_school_path(school)  %></p>
-              <p><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-            <% end %>
+            <p><%= link_to '詳細', school %></p>
+            <%# if current_user && current_user == school.user %>
+              <p><%#= link_to 'Edit', edit_school_path(school)  %></p>
+              <p><%#= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+            <%# end %>
         </div>  
       <% end %>
     </div>  
   </tbody>
 </table>
+
 
 

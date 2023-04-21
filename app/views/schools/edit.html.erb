@@ -1,6 +1,9 @@
-<h1>Editing School</h1>
+<h1>塾編集ページ</h1>
 
 <%= render 'form', school: @school %>
+<%= stylesheet_link_tag 'schools_form' %>
+<br>
 
-<%= link_to 'Show', @school %> |
-<%= link_to 'Back', schools_path %>
+<td><button type="button" class="btn-secondary"><%= link_to '詳細', @school %></button>
+<td><button type="button" class="btn-secondary"><%= link_to '戻る', schools_path %></button>
+
