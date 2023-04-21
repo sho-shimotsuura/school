@@ -8,10 +8,10 @@
   <%= f.search_field :name_cont, placeholder: "○○塾" %>
   <%= f.label :prefecture_cont, '都道府県' %>
   <%= f.search_field :prefecture_cont, placeholder: "○○県" %>
-  <% Subject.all.each do |subject| %>
-    <%= f.check_box :habdling_subjects_id_eq_any, { multiple: true, checked: subject[:checked], disabled: subject[:disabled], include_hidden: false }, subject[:id] %>
-    <label><%= subject.name %></label>
-  <% end %>
+  <div class="check_box">
+    <%= f.label :subjects_id_eq_all, '履修科目' %>
+    <%= f.collection_check_boxes :subjects_id_eq_all, Subject.all, :id, :name %>
+  </div>
   <%= f.submit '検索' %>
 <% end %>
 
@@ -41,7 +41,7 @@
             <p><%#= school.phone %></p>
             <p><%#= school.overview %></p>
             <p>
-              <% school.handling_subjects.each do |subject| %>
+              <% school.subjects.each do |subject| %>
                 <%= subject.name %>
               <% end %>
             </p>
