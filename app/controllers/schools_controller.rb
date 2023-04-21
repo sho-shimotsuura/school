@@ -34,13 +34,15 @@ class SchoolsController < ApplicationController
   def create
     @school = current_user.schools.build(school_params)
     respond_to do |format|
-      if @school.save
-        format.html { redirect_to school_url(@school), notice: "School was successfully created." }
-        format.json { render :show, status: :created, location: @school }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @school.errors, status: :unprocessable_entity }
-      end
+      #if @school.image.present?
+        if @school.save
+          format.html { redirect_to school_url(@school), notice: "School was successfully created." }
+          format.json { render :show, status: :created, location: @school }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @school.errors, status: :unprocessable_entity }
+        end
+      #end  
     end
   end
 

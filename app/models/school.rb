@@ -5,6 +5,7 @@ class School < ApplicationRecord
   has_many :handlings, dependent: :destroy
   has_many :subjects, through: :handlings, source: :subject
   has_one_attached :image
+  validates :image, presence: true
 
   def self.ransackable_attributes(auth_object = nil)
     %w(id name prefecture city phone overview image created_at updated_at subject_id)
