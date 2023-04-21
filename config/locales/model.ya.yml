@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      favorite: お気に入り
+      handling: 担当
+      school: 塾
+      subject: 科目
+      active_storage/blob: "添付ファイル"
+      active_storage/attachment: "添付"
+      active_storage/variant_record: "バリアント"

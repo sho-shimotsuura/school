@@ -6,8 +6,7 @@ class SchoolsController < ApplicationController
   def index
     @schools = School.all
     @q = School.ransack(params[:q])
-    #binding.pry
-    @schools = @q.result
+    @schools = @q.result.page(params[:page]).per(10)
     @subjects = Subject.all
   end
 

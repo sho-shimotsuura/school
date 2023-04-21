@@ -1,6 +1,37 @@
 ---
 ja:
   activerecord:
+    models:
+      user: ユーザー
+      favorite: お気に入り
+      handling: 担当
+      school: 塾
+      subject: 科目
+      active_storage/blob: "添付ファイル"
+      active_storage/attachment: "添付"
+      active_storage/variant_record: "バリアント"
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+        admin: 管理者権限
+        created_at: 作成日
+        updated_at: 更新日
+      school:
+        name: 塾名
+        prefecture: 都道府県
+        city: 住所
+        phone: 電話番号
+        created_at: 作成日
+        updated_at: 更新日
+      favorite:
+        user: ユーザー
+        post: 投稿
+        created_at: 作成日
+      subject:
+        name: 科目
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

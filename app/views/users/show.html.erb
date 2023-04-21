@@ -1,6 +1,33 @@
+<head>
+  <%= stylesheet_link_tag 'users_show' %>
+</head>
+
 <h1><%= @user.name %>さんのページ</h1>
       
 <p>メールアドレス: <%= @user.email %></p>
+
+<br>
+
+<% if @user == current_user %>
+  <%= link_to "プロフィールの編集", edit_user_path %>
+<% end %>
+
+<br>
+
+<% if current_user.role == "executive" %>
+  <h3>塾投稿一覧</h3>
+<% else %>
+  <h3>お気に入り一覧</h3>
+<%end%>
+
+
+<% if current_user.role == "executive" %>
+  <%= paginate @schools %>
+<% else %>  
+  <%= paginate @favorite_schools %>
+<% end %>  
+
+
 
 <table>
   <thead>
@@ -13,26 +40,22 @@
 
   <tbody>
     <% if current_user.role == "executive" %>
-      <% current_user.schools.each do |school| %>
-      <tr>
-        <td><%= school.name %></td>
-        <td><%= school.overview %></td>
-        <td><%= link_to 'Edit', edit_school_path(school)  %></td>
-        <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <% @schools.each do |school| %>
+            <tr>
+              <td><%= school.name %></td>
+              <td><%= school.overview %></td>
+              <td><button type="button" class="btn-secondary"><%= link_to '編集', edit_school_path(school) %></button></td>
+              <td><button type="button" class="btn-tertiary"><%= link_to '削除', school, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+            </tr>
       <% end %>
-      </tr>
     <% else %>
       <% @favorite_schools.each do |school| %>
-      <tr>
-        <td><%= school.name %></td>
-        <td><%= school.overview %></td>
-        <td><%= link_to '詳細', school_path(school.id) %></td>
-        <td><%= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+        <tr>
+          <td><%= school.name %></td>
+          <td><%= school.overview %></td>
+          <td><button type="button" class="btn-secondary"><%= link_to '詳細', school_path(school.id) %></button></td>
+          <td><button type="button" class="btn-tertiary"><%= link_to '削除', school, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+        </tr>
+      <% end %>
     <% end %>
 
-
-<% if @user == current_user %>
-  <%= link_to "プロフィールの編集", edit_user_path %>
-<% end %>

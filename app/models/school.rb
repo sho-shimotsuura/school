@@ -8,6 +8,7 @@ class School < ApplicationRecord
   has_many :handlings, dependent: :destroy
   has_many :handling_subjects, through: :handlings, source: :subject
   has_one_attached :image
+  validates :overview, length: { maximum: 200 }
 
   
 

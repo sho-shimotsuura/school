@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if current_user.role == "executive"
-      @schools = current_user.schools
+      @schools = current_user.schools.page(params[:page]).per(5)
     else  
-      @favorite_schools = current_user.favorite_schools
+      @favorite_schools = current_user.favorite_schools.page(params[:page]).per(5)
     end
   end
 
