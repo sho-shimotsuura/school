@@ -3,7 +3,6 @@
     email: "test#{n + 1}@gmail.com",
     name: "テスト#{n + 1}",
     password: "password#{n + 1}",
-    password_confirmation: "password#{n + 1}",
     admin: false
   )
 end

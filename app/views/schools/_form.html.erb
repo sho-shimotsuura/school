@@ -41,7 +41,7 @@
 
   <div class="field">
     <%= form.label :科目 %>
-    <%= form.collection_check_boxes(:handling_subject_ids, Subject.all, :id, :name) do |cd| %>
+    <%= form.collection_check_boxes(:subject_ids, Subject.all, :id, :name) do |cd| %>
       <%= cd.label { cd.check_box + cd.text } %>
     <% end %>
   </div>

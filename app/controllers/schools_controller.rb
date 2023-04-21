@@ -4,10 +4,8 @@ class SchoolsController < ApplicationController
 
   # GET /schools or /schools.json
   def index
-    @schools = School.all
     @q = School.ransack(params[:q])
-    @schools = @q.result.page(params[:page]).per(10)
-    @subjects = Subject.all
+    @schools = @q.result.includes(:subjects).page(params[:page]).per(10)
   end
 
   # GET /schools/1 or /schools/1.json
@@ -78,6 +76,6 @@ class SchoolsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
   def school_params
-    params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image, :id, { handling_subject_ids: [] })
+    params.require(:school).permit(:name, :prefecture, :city, :phone, :overview, :image, :id, { subject_ids: [] })
   end
 end
