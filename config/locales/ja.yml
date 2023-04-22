@@ -12,6 +12,8 @@ ja:
       active_storage/variant_record: "バリアント"
     attributes:
       user:
+        role_general: 一般ユーザー
+        role_executive: 経営者
         name: 名前
         email: メールアドレス
         password: パスワード

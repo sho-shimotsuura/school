@@ -27,8 +27,8 @@
     </div>
 
     <div class="field">
-    <%= f.label :role %><br />
-    <%= f.select :role, User.roles.keys.map { |role| [role.titleize, role] } %>
+      <%= f.label :role %><br />
+      <%= f.select :role, User.roles.keys.map { |role| [User.human_attribute_name("role_#{role}"), role] } %>
     </div>
 
 

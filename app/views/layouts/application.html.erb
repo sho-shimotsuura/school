@@ -12,18 +12,25 @@
 
   <body>
     <header>
+      <div class="left">
+        <h4> Search cram school</h4>
+      </div>
       <div class="right">
         <% if user_signed_in? %>
-          <%= link_to "塾一覧", schools_path %>
-          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-            <% if current_user.admin? %>
-              <%= link_to "管理者ページ", rails_admin_path %>
+            <% unless current_page?(schools_path) %>
+              <%= link_to "塾一覧", schools_path %>
             <% end %>  
-        <% else %>
-          <%= link_to "塾一覧", schools_path %>
-          <%= link_to "新規登録", new_user_registration_path %>
-          <%= link_to 'ログイン', new_user_session_path %>
-        <% end %>
+            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+              <% if current_user.admin? %>
+                <%= link_to "管理者ページ", rails_admin_path %>
+              <% end %>  
+          <% else %>
+            <% unless current_page?(schools_path) %>
+              <%= link_to "塾一覧", schools_path %>
+            <% end %>
+            <%= link_to "新規登録", new_user_registration_path %>
+            <%= link_to 'ログイン', new_user_session_path %>
+          <% end %>
       </div>
     </header>
     
@@ -36,6 +43,12 @@
       <% end %>
 
       <%= yield %>
-    <footer></footer>
+
+
+    <footer>
+      <div class="footer">
+        <p>© <%= Time.current.year %> DICcampany. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
