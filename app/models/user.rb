@@ -6,8 +6,12 @@ class User < ApplicationRecord
   has_many :schools
   has_many :favorites, dependent: :destroy
   has_many :favorite_schools, through: :favorites, source: :school
-  enum role: { general: 0, executive: 1 }
   validates :name, presence: true
+  enum role: { general: 0, executive: 1 }
+
+  def role_i18n
+    I18n.t("enums.user.role.#{role}")
+  end
 
   def self.guest_admin
     find_or_create_by!(email: 'guest_admin@example.com') do |user|

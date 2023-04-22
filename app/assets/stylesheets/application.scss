@@ -48,6 +48,10 @@ header {
   color: rgb(18, 8, 0);
 }
 
+.left {
+  vertical-align: bottom;
+  display: table-cell
+}
 
 footer {
   background-color: rgb(222, 58, 13);
@@ -57,3 +61,5 @@ footer {
   bottom: 0;
   display: table;
 }
+
+

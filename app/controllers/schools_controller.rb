@@ -5,7 +5,7 @@ class SchoolsController < ApplicationController
   # GET /schools or /schools.json
   def index
     @q = School.ransack(params[:q])
-    @schools = @q.result.includes(:subjects).page(params[:page]).per(10)
+    @schools = @q.result(distinct: true).includes(:subjects).page(params[:page]).per(10)
   end
 
   # GET /schools/1 or /schools/1.json

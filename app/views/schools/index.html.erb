@@ -9,8 +9,8 @@
   <%= f.label :prefecture_cont, '都道府県' %>
   <%= f.search_field :prefecture_cont, placeholder: "○○県" %>
   <div class="check_box">
-    <%= f.label :subjects_id_eq_all, '履修科目' %>
-    <%= f.collection_check_boxes :subjects_id_eq_all, Subject.all, :id, :name %>
+    <%= f.label :subjects_id_eq_any, '履修科目' %>
+    <%= f.collection_check_boxes :subjects_id_eq_any, Subject.all, :id, :name %>
   </div>
   <%= f.submit '検索' %>
 <% end %>
