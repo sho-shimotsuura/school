@@ -46,13 +46,15 @@
     <br>
     <br>
 
-    <% unless @school.user_id == current_user.id %>
-      <% if @favorite.present? %>
-        <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
-      <% else %>
-        <%= link_to 'お気に入りする', favorites_path(school_id: @school.id), method: :post, class: 'btn btn-primary' %>
+    <% if current_user.role == "general" %>
+      <% unless @school.user_id == current_user.id %>
+        <% if @favorite.present? %>
+          <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+          <%= link_to 'お気に入りする', favorites_path(school_id: @school.id), method: :post, class: 'btn btn-primary' %>
+        <% end %>
       <% end %>
-    <% end %>
+    <% end %>  
     
     <% if @school.user_id == current_user.id %>
       <%= link_to '編集', edit_school_path(@school) %> |

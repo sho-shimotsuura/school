@@ -13,6 +13,7 @@
 $git clone git@github.com:sho-shimotsuura/school.git  
 $cd school  
 $bundle install  
+$yarn install  
 $rails db create && rails db:migrate  
 $rails s  
 
