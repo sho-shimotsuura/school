@@ -25,6 +25,7 @@ ja:
         name: 塾名
         prefecture: 都道府県
         city: 住所
+        overview: 概要
         image: 画像
         phone: 電話番号
         created_at: 作成日
