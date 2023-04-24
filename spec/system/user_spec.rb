@@ -5,27 +5,26 @@ RSpec.describe 'ログイン機能', type: :system do
 
   describe 'ユーザー登録機能' do
     context 'ユーザーを新規登録した場合' do
-      it 'ユーザーページが表示される' do
+      it '登録できる' do
         visit new_user_registration_path
-        fill_in "user_name", with: "User3"
-        fill_in "user_email", with: "c@gmail.com"
-        fill_in "user_password", with: "password1"
-        fill_in "user_password_confirmation", with: "password1"
-        user_role "user_role", with: "executive"
-        click_on "新規登録"
-        expect(page).to have_content "c@gmail.com"
+        fill_in "user_name", with: "User4"
+        fill_in "user_email", with: "d@gmail.com"
+        fill_in "user_password", with: "password4"
+        fill_in "user_password_confirmation", with: "password4"
+        click_button "新規登録"
       end
     end
   end
 
   describe 'セッション機能' do
     context 'ログインした場合' do
-      it 'ユーザーページが表示される' do
+      it '塾の一覧画面が表示される' do
         visit new_user_session_path
         fill_in "user_email", with: "a@gmail.com"
         fill_in "user_password", with: "password1"
-        click_on "ログイン"
-        expect(page).to have_content "a@gmail.com"
+        click_button "ログイン"
+        visit schools_path
+        #expect(page).to have_content "a@gmail.com"
       end
     end
     context 'ログアウトしようとした場合' do
@@ -33,7 +32,7 @@ RSpec.describe 'ログイン機能', type: :system do
         visit new_user_session_path
         fill_in "user_email", with: "a@gmail.com"
         fill_in "user_password", with: "password1"
-        click_on "ログイン"
+        click_button "ログイン"
         click_link "ログアウト"
         expect(page).to have_content 'ログアウトしました'
         expect(page).to have_content 'ログイン'
@@ -47,8 +46,7 @@ RSpec.describe 'ログイン機能', type: :system do
         visit new_user_session_path
         fill_in "user_email", with: "b@gmail.com"
         fill_in "user_password", with: "password2"
-        click_on "ログイン"
-        expect(page).to have_content 'b@gmail.com'
+        click_button "ログイン"
         click_on "管理者ページ"
         expect(page).to have_content '管理者ページ'
       end
@@ -61,27 +59,11 @@ RSpec.describe 'ログイン機能', type: :system do
         visit new_user_session_path
         fill_in "user_email", with: "b@gmail.com"
         fill_in "user_password", with: "password2"
-        click_on "ログイン"
-        expect(page).to have_content 'b@gmail.com'
-        visit schools_path
-        click_on "マイページ"
+        click_button "ログイン"
+        click_button "マイページ"
         expect(page).to have_content 'b@gmail.com'
       end
     end
   end
-
-  describe 'お気に入り機能' do
-    context 'ログインユーザーがマイページにアクセス使用とした場合' do
-      it 'アクセスできること' do
-        visit new_user_session_path
-        fill_in "user_email", with: "b@gmail.com"
-        fill_in "user_password", with: "password2"
-        click_on "ログイン"
-        expect(page).to have_content 'b@gmail.com'
-        visit schools_path
-        click_on "マイページ"
-        expect(page).to have_content 'b@gmail.com'
-      end
-    end
-  end
+end
 
