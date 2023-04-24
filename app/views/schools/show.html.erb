@@ -5,40 +5,40 @@
 <div class="contents">
   <div class="content">
     <p>
-      <strong>Name:</strong>
+      <strong>塾名:</strong>
       <%= @school.name %>
     </p>
 
     <p>
-      <strong>Prefecture:</strong>
+      <strong>都道府県:</strong>
       <%= @school.prefecture %>
     </p>
 
     <p>
-      <strong>City:</strong>
+      <strong>住所:</strong>
       <%= @school.city %>
     </p>
 
     <p>
-      <strong>Phone:</strong>
+      <strong>電話番号:</strong>
       <%= @school.phone %>
     </p>
 
     <p>
-      <strong>Subject</strong>
+      <strong>科目</strong>
         <% @school.subjects.each do |subject| %>
           <%= subject.name %>
         <% end %>
     </p>    
 
     <p>
-      <strong>Overview:</strong>
+      <strong>概要:</strong>
       <%= @school.overview %>
     </p>
     <br>
     <br>
     <p>
-      <strong>Image:</strong>
+      <strong>画像:</strong>
       <br>
       <%= image_tag @school.image, size:'200x200' %>
     </p>

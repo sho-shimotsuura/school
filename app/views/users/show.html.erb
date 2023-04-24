@@ -50,11 +50,16 @@
       <% end %>
     <% else %>
       <% @favorite_schools.each do |school| %>
+      <% favorite = current_user.favorites.find_by(school_id: school.id) %>
         <tr>
           <td><%= school.name %></td>
           <td><%= school.overview %></td>
           <td><button type="button" class="btn-secondary"><%= link_to '詳細', school_path(school.id) %></button></td>
-          <td><button type="button" class="btn-tertiary"><%= link_to '削除', school, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+          <% if favorite.present? %>
+            <td><%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete, class: 'btn btn-danger' %></td>
+          <% else %>
+            <td>お気に入り情報がありません</td>
+          <% end %>
         </tr>
       <% end %>
     <% end %>
