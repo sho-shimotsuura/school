@@ -16,7 +16,9 @@
 <% end %>
 
 
-<td><button type="button" class="btn-secondary"><%= link_to '塾の新規投稿', new_school_path %></button><td>
+<% if current_user && current_user.role == "executive"%>
+  <td><button type="button" class="btn-secondary"><%= link_to '塾の新規投稿', new_school_path %></button><td>
+<% end %>
 <% if current_user %>
   <td><button type="button" class="btn-secondary"><%= link_to 'マイページ', user_path(current_user) %></button><td>
 <% end %>  
