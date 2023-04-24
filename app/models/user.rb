@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_schools, through: :favorites, source: :school
   validates :name, presence: true
+  validates :email, presence: true
   enum role: { general: 0, executive: 1 }
 
   def role_i18n
