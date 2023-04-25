@@ -2,7 +2,18 @@
   <%= stylesheet_link_tag 'schools' %>
 </head>
 
-<h3>塾検索</h3>
+<table>
+  <tr>
+    <td><h3>塾検索</h3><td>
+    <% if current_user && current_user.role == "executive"%>
+      <td><button type="button" class="btn-secondary"><%= link_to '塾の新規投稿', new_school_path %></button><td>
+    <% end %>
+    <% if current_user %>
+      <td><button type="button" class="btn-secondary"><%= link_to 'マイページ', user_path(current_user) %></button><td>
+    <% end %>  
+  </tr>
+</table> 
+
 <%= search_form_for @q, url: schools_path do |f| %>
   <%= f.label :name_cont, '塾名' %>
   <%= f.search_field :name_cont, placeholder: "○○塾" %>
@@ -16,12 +27,6 @@
 <% end %>
 
 
-<% if current_user && current_user.role == "executive"%>
-  <td><button type="button" class="btn-secondary"><%= link_to '塾の新規投稿', new_school_path %></button><td>
-<% end %>
-<% if current_user %>
-  <td><button type="button" class="btn-secondary"><%= link_to 'マイページ', user_path(current_user) %></button><td>
-<% end %>  
 
 <h3>塾一覧</h3>
 
