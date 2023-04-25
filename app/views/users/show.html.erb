@@ -8,17 +8,21 @@
 
 <br>
 
-<% if @user == current_user %>
-  <%= link_to "プロフィールの編集", edit_user_path %>
-<% end %>
+<div class="profile">
+  <% if @user == current_user %>
+    <%= link_to "プロフィールの編集", edit_user_path %>
+  <% end %>
+</div>
 
 <br>
 
-<% if current_user.role == "executive" %>
-  <h3>塾投稿一覧</h3>
-<% else %>
-  <h3>お気に入り一覧</h3>
-<%end%>
+<div class="okiniiri">
+  <% if current_user.role == "executive" %>
+    <h3>塾投稿一覧</h3>
+  <% else %>
+    <h3>お気に入り一覧</h3>
+  <%end%>
+</div>
 
 
 <% if current_user.role == "executive" %>
@@ -50,17 +54,17 @@
       <% end %>
     <% else %>
       <% @favorite_schools.each do |school| %>
-      <% favorite = current_user.favorites.find_by(school_id: school.id) %>
-        <tr>
-          <td><%= school.name %></td>
-          <td><%= school.overview %></td>
-          <td><button type="button" class="btn-secondary"><%= link_to '詳細', school_path(school.id) %></button></td>
-          <% if favorite.present? %>
-            <td><%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete, class: 'btn btn-danger' %></td>
-          <% else %>
-            <td>お気に入り情報がありません</td>
-          <% end %>
-        </tr>
+        <% favorite = current_user.favorites.find_by(school_id: school.id) %>
+          <tr>
+            <td><%= school.name %></td>
+            <td><%= school.overview %></td>
+            <td><button type="button" class="btn-secondary"><%= link_to '詳細', school_path(school.id) %></button></td>
+            <% if favorite.present? %>
+              <td><%= link_to 'お気に入り解除する', favorite_path(id: favorite.id), method: :delete, class: 'btn btn-danger' %></td>
+            <% else %>
+              <td>お気に入り情報がありません</td>
+            <% end %>
+          </tr>
       <% end %>
     <% end %>
   </tbody>

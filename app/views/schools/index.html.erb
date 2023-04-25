@@ -45,18 +45,12 @@
             <p><%= school.name %></p>
             <p><%= school.prefecture %></p>
             <p><%= school.city %></p>
-            <p><%#= school.phone %></p>
-            <p><%#= school.overview %></p>
             <p>
               <% school.subjects.each do |subject| %>
                 <%= subject.name %>
               <% end %>
             </p>
             <p><%= link_to '詳細', school %></p>
-            <%# if current_user && current_user == school.user %>
-              <p><%#= link_to 'Edit', edit_school_path(school)  %></p>
-              <p><%#= link_to 'Destroy', school, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-            <%# end %>
         </div>  
       <% end %>
     </div>  
